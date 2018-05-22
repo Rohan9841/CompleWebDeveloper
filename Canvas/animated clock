@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+    
+        <title>clock</title>
+        
+        <style type = "text/css">
+        
+            
+            
+        </style>
+    
+    </head>
+
+    <body>
+        
+        <canvas id = "myCanvas" width = "600" height = "600"></canvas>
+        
+        <script type = "text/javascript">
+            
+            function clock(){
+        
+            var canvas = document.getElementById("myCanvas");
+            var context = canvas.getContext("2d");
+
+            var clockRadius = context.canvas.width/2;
+            
+            context.beginPath();
+            context.arc(clockRadius,clockRadius,clockRadius,0,2*Math.PI);
+            context.fillStyle = "black";
+            context.fill(); 
+            context.closePath();
+            
+            context.beginPath();
+            context.font = clockRadius/10+"px Arial";
+            context.fillStyle = "white";
+            context.textAlign = "center";
+            context.textBaseLine = "middle";
+            context.fillText("12",clockRadius,clockRadius-(clockRadius*0.9));
+            
+            var i = 1;
+             
+           for( var angle = 2*Math.PI/12; angle<=2*Math.PI; angle+=2*Math.PI/12)
+           {
+            
+               context.fillText(i,clockRadius+clockRadius*0.9*Math.sin(angle),clockRadius-clockRadius*0.9*Math.cos(angle));
+               
+               i+=1;
+               
+           }
+
+            context.closePath();
+            
+        
+            
+            var hours = new Date().getHours();
+            var minutes = new Date().getMinutes();
+            var seconds = new Date().getSeconds();
+            var fullHours = hours % 12 + minutes/60 + seconds/3600;
+            
+            var hoursAngle = fullHours * 2*Math.PI/12;
+            var minutesAngle = minutes * 2*Math.PI/60;
+            var secondsAngle = seconds * 2*Math.PI/60;
+            
+            context.beginPath();
+            context.moveTo(clockRadius,clockRadius);
+            context.lineTo(clockRadius+clockRadius*0.6*Math.sin(hoursAngle),clockRadius-clockRadius*0.6*Math.cos(hoursAngle));
+            context.strokeStyle = "white";
+            context.lineWidth = (clockRadius*0.04);
+            context.stroke();
+            context.closePath();
+            
+            context.beginPath();
+            context.moveTo(clockRadius,clockRadius);
+            context.lineTo(clockRadius+clockRadius*0.75*Math.sin(minutesAngle),clockRadius-clockRadius*0.75*Math.cos(minutesAngle));
+            context.lineWidth = clockRadius*0.024;
+            context.strokeStyle = "white";
+            context.stroke();
+            context.closePath();
+            
+            context.beginPath();
+            context.moveTo(clockRadius,clockRadius);
+            context.lineTo(clockRadius+clockRadius*0.9*Math.sin(secondsAngle),clockRadius-clockRadius*0.9*Math.cos(secondsAngle));
+            context.strokeStyle = "white";
+            context.lineWidth = clockRadius*0.01;
+            context.stroke();
+            context.closePath();
+            
+            
+            context.beginPath();
+            context.arc(clockRadius,clockRadius,14,0,2*Math.PI);
+            context.fillStyle = "white";
+            context.fill();
+            context.closePath();
+                
+            }
+            
+            setInterval(clock,1000);
+           
+        
+        </script>
+        
+    </body>
+
+</html>

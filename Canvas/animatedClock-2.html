@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <title>animated Clock</title>
+
+        <style type = "text/css">
+
+
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <canvas id = "myCanvas" width = 600 height = 600></canvas>
+
+        <script type = "text/javascript">
+
+            function clock(){
+
+                var canvas = document.getElementById("myCanvas");
+                var context = canvas.getContext("2d");
+                var circleRadius = canvas.width/2;
+
+                context.beginPath();
+                context.fillStyle = "black";
+                context.arc(circleRadius,circleRadius,circleRadius,0,2*Math.PI);
+                context.fill();
+                context.closePath();
+
+                context.beginPath();
+                context.fillStyle = "white";
+                context.textAlign = "center";
+                context.font = circleRadius*0.1+ "px Arial";
+
+                var i = 1;
+                var angle = 2*Math.PI/12
+
+                while(i<=12)
+                {
+                    context.fillText(i,circleRadius+circleRadius*0.9*Math.sin(angle),circleRadius-circleRadius*0.9*Math.cos(angle));
+
+                    angle = angle + Math.PI/6;
+                    i++;
+                }
+
+                context.closePath();
+
+                var hours = new Date().getHours();
+                var minutes = new Date().getMinutes();
+                var seconds = new Date().getSeconds();
+                var fullHours = hours % 12 + minutes/60 + seconds/3600; 
+
+                var hoursAngle = fullHours*2*(Math.PI/12);
+                var minutesAngle = minutes*2*(Math.PI/60);
+                var secondsAngle = seconds*2*(Math.PI/60);
+
+                context.beginPath();
+                context.strokeStyle = "white";
+                context.lineWidth = circleRadius*0.02;
+                context.moveTo(circleRadius,circleRadius);
+                context.lineTo(circleRadius+circleRadius*0.8*Math.sin(minutesAngle),circleRadius-circleRadius*0.8*Math.cos(minutesAngle));
+                context.stroke();
+                context.closePath();
+
+                context.beginPath();
+                context.strokeStyle = "white";
+                context.lineWidth = circleRadius*0.035;
+                context.moveTo(circleRadius,circleRadius);
+                context.lineTo(circleRadius+circleRadius*0.65*Math.sin(hoursAngle),circleRadius-circleRadius*0.65*Math.cos(hoursAngle));
+                context.stroke();
+                context.closePath();
+
+                context.beginPath();
+                context.strokeStyle = "white";
+                context.lineWidth = circleRadius*0.01;
+                context.moveTo(circleRadius,circleRadius);
+                context.lineTo(circleRadius+circleRadius*0.9*Math.sin(secondsAngle),circleRadius-circleRadius*0.9*Math.cos(secondsAngle));
+                context.stroke();
+                context.closePath();
+
+                context.beginPath();
+                context.arc(circleRadius,circleRadius,circleRadius*0.05,0,2*Math.PI);
+                context.fillStyle = "white";
+                context.fill();
+                context.closePath();
+            }
+            
+            setInterval(clock,1000);
+
+
+
+        </script>
+
+    </body>
+
+</html>

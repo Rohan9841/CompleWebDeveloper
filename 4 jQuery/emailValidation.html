@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <title>Email Validation</title>
+
+        <style type = "text/css">
+
+            #container
+            {
+
+                margin: 0 auto;   
+                width: 1350px;
+                background-color: black;
+
+            }
+
+            .margin
+            {
+
+                margin-bottom: 15px;
+
+            }
+
+            label
+            {
+
+                background-color:red;
+                font-size: 22px;
+                position: relative;
+                float: left;
+                height: 30px;
+                width: 250px;
+
+            }
+
+            input
+            {
+
+                height: 30px;
+                text-align: center;
+                font-size:20px;
+                border-radius: 10px;
+                border: 1px black solid;
+
+            }
+
+            #sign-upButton
+            {
+
+                margin-left: 250px;
+                width: 110px;
+
+            }
+
+            #sign-upButton:hover
+            {
+                text-decoration: underline;
+            }
+
+            #result
+            {
+                color: red;
+
+            }
+
+        </style>
+
+        <script src = "jquery.js"></script>
+
+    </head>
+
+    <body>
+
+        <div id = "container">
+
+            <div id = "result"></div>
+
+            <div class = "margin">
+
+                <label for = "email">Email:</label>
+
+                <input type = "text" name = "email" id = "email" placeholder = "ex: abc1234@gmail.com">
+
+            </div>
+
+            <div class = "margin">
+
+                <label for = "phone">Telephone:</label>
+
+                <input type = "text" name = "phone" id = "phone" placeholder = "ex: 0123456789">
+
+            </div>
+
+            <div class = "margin">
+
+                <label for = "password">Password:</label>
+
+                <input type = "password" name = "password" id = "password">
+
+            </div>
+
+            <div class = "margin">
+
+                <label for = "confirmPassword">Confirm password:</label>
+
+                <input type = "password" name = "confirmPassword" id = "confirmPassword">
+
+            </div>
+
+            <div class = "margin">
+
+                <input type = "submit" value = "Sign Up" id = "sign-upButton">
+
+            </div>
+
+            <script type = "text/javascript">
+
+                var emailRegex = /^[A-Za-z0-9-_.]+@[A-Za-z.]+\.[A-Za-z]{2,4}$/;
+
+                var phoneRegex = /^[+\s]{0,1}[0-9]{0,3}[-\s]{0,1}[(]{0,1}[0-9]{3}[)]{0,1}[-\s]{0,1}[0-9]{3}[-\s]{0,1}[0-9]{4}$/;
+
+                var result = "";
+                var fieldMissing = "";
+
+                $("#sign-upButton").click(function(){
+
+                    if ($("#email").val()=="")
+                    {
+
+                        fieldMissing+= "email is missing."
+
+                    }
+
+                    if($("#phone").val()=="")
+                    {
+
+                        fieldMissing+= "<br>phone is missing."
+
+                    }
+
+                    if($("#password").val()=="")
+                    {
+
+                        fieldMissing+= "<br>password is missing."
+
+                    }
+
+                    if($("#confirmPassword").val()=="")
+                    {
+
+                        fieldMissing+= "<br>password confirmation is missing";
+
+                    }
+
+                    if(fieldMissing != "")
+                    {
+
+                        result+= "<p>The following fields are missing:</p>"+fieldMissing;
+
+                    }
+
+                    if(!$("#email").val().match(emailRegex))
+                    {
+
+                        result = result + "<p>Please type valid email.</p>" 
+
+                    }
+
+                    if(!$("#phone").val().match(phoneRegex))
+                    {
+
+                        result = result + "<p>Please type valid phone number.</p>"
+                    }
+
+                    if($("#password").val() != $("#confirmPassword").val())
+                    {
+
+                        result = result + "<p>Please type correct password.</p>"
+
+                    }
+
+                    if (result != "")
+                    {
+                        $("#result").html(result);
+                    }
+
+                    if(result == "")
+                    {
+                        $("#result").html("All fields are proper.")
+                    }
+
+                })
+
+            </script>
+
+        </div>
+
+    </body>
+
+</html>

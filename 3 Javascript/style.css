@@ -1,0 +1,61 @@
+        #shape{
+                
+                border:1px black solid;
+                width:200px;
+                height:200px;
+                background-color:bisque;
+                display:none;
+                position:relative;
+                            
+            }
+            
+            #time{
+                
+                border:1px black solid;
+                width:70px;
+                height:20px;
+                position:relative;
+                top:-35px;
+                left:70px;
+                text-align:center;
+            }
+            
+            #bestTime{
+                
+                position:relative;
+                top:-70px;
+                left:200px;
+            }
+            
+            #best{
+                
+                border:1px black solid;
+                width:80px;
+                height:20px;
+                position:relative;
+                top:-105px;
+                left:270px;
+                text-align:center; 
+                
+            }
+
+#timer{
+    
+    width:70px;
+    height:25px;
+    text-align:center;
+    position:relative;
+    top:-35px;
+    left:70px;
+    border:1px black solid;
+    
+    
+}
+
+#text{
+    
+    font-size:200%;
+    text-align:center;
+    font-weight:bold;
+    
+}

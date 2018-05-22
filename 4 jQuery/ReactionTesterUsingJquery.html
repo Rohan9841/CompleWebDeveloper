@@ -1,0 +1,80 @@
+<html>
+    
+    <head>
+        
+        <script type = "text/javascript" src="jquery.js"></script>
+        
+        <style type="text/css">
+    
+            
+            #circle{
+                
+                background-color:cadetblue;
+                width:200px;
+                height:200px;
+                border-radius:50%;
+                position:relative;
+                display:none;
+                
+        
+        </style>
+        
+        <title>jQuery</title>
+    
+    </head>
+
+    <body>
+        
+        <div id="circle"></div>
+        
+        <script type ="text/javascript">
+            
+           
+            
+            function showShape(){
+                
+                $("#circle").css("display","block")
+                $("#circle").css("left",Math.random()*800+"50px")
+                $("#circle").css("top",Math.random()*800+"50px")
+                $("#circle").css("backgroundColor",colors())
+                
+                
+            }
+            
+             function colors(){
+                
+                var letters = "0123456789ABCDEF".split("");
+                var color = "#"
+                var i =0
+                while(i<6){
+                    
+                    color= color+letters[Math.floor(Math.random()*16)]
+                    i++
+                }
+                 
+                
+                return color;
+                
+            }
+            
+            function interval(){
+                
+                setTimeout(showShape,Math.random()*2000);
+            }
+            
+            interval()
+            
+            $("#circle").click(function(){
+                
+                $("#circle").css("display","none")
+                
+                interval()
+                
+            })
+            
+            
+        </script>
+        
+    </body>
+
+</html>

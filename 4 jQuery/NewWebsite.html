@@ -1,0 +1,328 @@
+<!doctype html>
+
+<html>
+
+    <head>
+    
+        <title>New Website</title>
+        
+        <script type= "text/javascript" src="jquery.js"></script>
+        
+        <style type="text/css">
+            
+            body{
+                
+                margin:0;
+                padding:0;
+                background-image: url(https://wallpaperscraft.com/image/naruto_uchiha_itachi_sharingan_figure_night_red_moon_birds_41763_1600x900.jpg);
+                
+                
+            }
+            
+            .clearFloat{
+                
+                clear:both;
+                
+            }
+            
+            #time{
+                
+                text-align: center;
+                color:white;
+                font-size:75px;
+                position:relative;
+                top:690px;
+                width:700px;
+                left:-80px;
+                
+            }
+            
+            #loginBox{
+                
+                background-color:;
+                width:400px;
+                height:330px;
+                position:relative;
+                top:100px;
+                float:left;
+            }
+        
+            #logInText{
+                
+                color:white;
+                font-family:fantasy;
+                font-size:200%;
+                position:relative;
+                margin-left:40px;
+                
+            }   
+            
+            
+            #insideLoginBox{
+                
+                position:relative;
+                background-color: ;
+                width:300px;
+                height:180px;
+                margin-left:35px;
+                top:50px;
+                                
+            }
+            
+            #usernameImage{
+                
+                width:30px;
+                height:30px;
+                float:left;
+                margin-left:30px;
+                margin-top:20.5px;
+            }
+            
+            #username{
+                
+                height:24.5px;
+                width:200px;
+                margin-top:20px;
+            }
+            
+            ::-webkit-input-placeholder{
+                
+                font-family:cursive;
+                font-weight:600;
+                padding-left:20px;
+                
+            }
+            
+            #passwordImage{
+                
+                width:30px;
+                height:30px;
+                float:left;
+                margin-left:30px;
+                margin-top:20.5px;
+                
+            }
+            
+            #password{
+                
+                margin-top:20px;
+                height:24.5px;
+                width:200px;
+                
+            }
+            
+            #loginButton{
+                
+                position:relative;
+                height:30px;
+                width:234.5px;
+                left:30px;
+                margin-top:20px;
+                
+            }
+            
+             #registerBox{
+                
+                background-color:;
+                width:400px;
+                height:380px;
+                position:relative;
+                top:100px;
+                float:left;
+                margin-left:10px;
+            }
+        
+            #registerText{
+                
+                color:white;
+                font-family:fantasy;
+                font-size:200%;
+                position:relative;
+                margin-left:40px;
+                
+            }   
+            
+            #insideRegisterBox{
+                
+                background-color:;
+                width:300px;
+                height:230px;
+                margin-left:35px;
+                
+            }
+            
+            #registerName{
+                
+                position:relative;
+                height:24.5px;
+                width:230px;
+                left:30px;
+                margin-top:20px;
+                
+            }
+            
+            #registerUsername{
+                
+                position:relative;
+                height:24.5px;
+                width:230px;
+                left:30px;
+                margin-top:20px;
+                
+            }
+            
+            #registerPassword{
+                
+                position:relative;
+                height:24.5px;
+                width:230px;
+                left:30px;
+                margin-top:20px;  
+                
+            }
+            
+            #registerButton{
+                
+                position:relative;
+                height:30px;
+                width:234.5px;
+                left:30px;
+                margin-top:20px;
+                
+            }
+            
+            #forgotPassword{
+                
+                position:relative;
+                font-size:80%;
+                color:white;
+                font-family:sans-serif;
+                left:65px;
+                top:70px;
+                text-decoration:none;
+            }
+            
+            #registerLink{
+                
+                position:relative;
+                font-size:80%;
+                color:white;
+                font-family:sans-serif;
+                left:150px;
+                top:70px;
+                text-decoration:none;
+                
+            }
+            
+            #forgotPassword:hover{
+                
+                text-decoration:underline;
+                
+            }
+            
+            #registerLink:hover{
+                
+                text-decoration:underline;
+                
+            }
+            
+            #loginLink{
+                
+                position:relative;
+                font-size:80%;
+                color:white;
+                font-family:sans-serif;
+                left:260px;
+                top:20px;
+                text-decoration:none;
+                
+            }
+            
+            #loginLink:hover{
+                
+                text-decoration:underline;
+            }
+        
+        </style>
+    
+    </head>
+
+    <body>
+    
+        <div id="loginBox">
+        
+            <p id="logInText">Log Into Your Account</p>
+
+            <div id="insideLoginBox">
+
+                <input type="image" src = "username.jpg" id="usernameImage">
+
+                <input id="username" placeholder="Email Address" type="text" > 
+
+                <div class="clearFloat"></div>
+
+                <input type="image" src="password.png" id="passwordImage">
+
+                <input type="password" id="password" placeholder="Password">
+
+                <div class="clearFloat"></div>
+
+                <input type="submit" value="Login" id="loginButton">
+
+            </div>
+            
+            <a href="https://support.apple.com/en-us/HT201487" id="forgotPassword" target="_blank">Forgot Password</a>
+            
+            <a href="#registerName" id="registerLink">Register</a>
+            
+        </div>
+        
+        <div id="registerBox">
+            
+            <p id="registerText">Register a new Account</p>
+            
+            <div id="insideRegisterBox">
+            
+                <input type="text" placeholder="Name" id="registerName">
+                
+                <input type="text" placeholder="Email Address" id="registerUsername">
+                
+                <input type="password" placeholder="Password" id="registerPassword">
+                
+                <input type="submit" value="Register" id="registerButton">
+        
+            </div>
+            
+            <a href="#username" id="loginLink">Login</a>
+            
+        </div>
+        
+        
+
+        <div id = "time"></div>
+        
+        
+        <script type="text/javascript">
+            
+            
+            
+            function timeShow(){
+                
+                var time = new Date().toLocaleTimeString();
+                $("#time").html(time);
+                
+            }
+            
+            function updateTime(){
+                
+                setInterval(timeShow,1000)
+                
+            }
+            
+            updateTime();   
+        
+        </script>
+        
+    </body>
+
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <title>Code Player</title>
+
+        <style type = "text/css">
+
+            body
+            {
+                margin: 0;
+                padding: 0;
+                font-family: sans-serif;
+            }
+
+            #contentBox
+            {
+                margin: 0 auto;
+                height: 100%;
+                width: 100%;
+            }
+
+            #header
+            {
+                background-color: #EEEEEE;
+                height: 60px;
+            }
+
+            #wordCodePlayer
+            {
+                font-size: 200%;
+                font-family: arial;
+                font-weight: bold;
+                float: left;
+                position: relative;
+                top: 10px;
+            }
+
+            #buttonTabs
+            {
+                margin: 0 auto;
+                width: 319px;
+                position: relative;
+                top: 10px;
+            }
+
+            .panel
+            {
+                float: left;
+                font-size: 120%;
+                border-left: 1px grey solid;
+                border-top: 1px grey solid;
+                border-bottom: 1px grey solid;
+                padding: 8px 10px;
+            }
+
+            #output
+            {
+                border-right: 1px grey solid;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+
+            #html
+            {
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+
+            }
+
+            .hovered
+            {
+                background-color: grey !important;
+            }
+
+            .active
+            {
+                background-color: #E8F2FF;
+            }
+
+            .hidden
+            {
+                display: none;
+            }
+
+            textArea
+            {
+                resize: none;
+            }
+
+            .contentArea
+            {
+                float: left;
+            }
+
+        </style>
+
+        <script type = "text/javascript" src = "jquery.js"></script>
+        <script src = "jquery-ui/jquery-ui.min.js"></script>
+        <link href = "jquery-ui/jquery-ui.min.css" rel = "stylesheet">
+
+    </head>
+
+    <body>
+
+        <div id = "contentBox">
+
+            <div id = "header">
+
+                <div id = "wordCodePlayer">
+
+                    Code Player
+
+                </div>
+
+                <div id = "buttonTabs">
+
+                    <div id = "html" class = "panel active">HTML</div>
+                    <div id = "css" class = "panel">CSS</div>
+                    <div id = "javaScript" class = "panel">javaScript</div>
+                    <div id = "output" class = "panel active">Output</div>
+
+                </div>
+
+            </div>
+
+            <div id = "textAreas">
+
+                <textArea id = "htmlTextArea" class = "contentArea"><p>Hello WORLD!My name is Rohan</p></textArea>
+                <textArea id = "cssTextArea" class = "contentArea hidden">p{color: green;}</textArea>
+                <textArea id = "javaScriptTextArea" class = "contentArea hidden">alert("hey");</textArea>
+                <iframe id = "outputTextArea" class = "contentArea"></iframe>
+
+            </div>
+
+        </div>
+
+        <script type = "text/javascript">
+
+            numOfActiveTabs = 2;
+
+            function updateHeight(){
+
+                $(".contentArea").css("height",$(window).height()-$("#header").height());
+            }
+
+            function updateWidth(){
+                $(".contentArea").css("width",$(window).width()/numOfActiveTabs-10)
+            }
+            
+            function updateOutput(){
+                
+                $("#outputTextArea").contents().find("html").html("<html><head><style type = 'text/css'>"+$("#cssTextArea").val()+"</style></head><body>"+$("#htmlTextArea").val()+"</body></html>");
+                
+            }
+            
+            function updateJavaScript(){
+                document.getElementById("outputTextArea").contentWindow.eval($("#javaScriptTextArea").val());
+            }
+
+            $(".panel").hover(
+                function(){
+                    $(this).addClass("hovered");
+                },
+                function(){
+                    $(this).removeClass("hovered");
+                }) 
+
+            $(".panel").click(function(){
+
+                if(!$(this).hasClass("active"))
+                {
+                    $(this).addClass("active");
+                    $(this).removeClass("hovered");
+                }
+                else
+                {
+                    $(this).removeClass("active");
+                    $(this).removeClass("hovered");
+                }
+
+                var areaToShow = $(this).attr("id")+ "TextArea";
+
+                $("#"+areaToShow).toggleClass("hidden");
+
+                numOfActiveTabs = 4 - $('.hidden').length;
+
+                updateWidth();
+
+            })
+
+            updateHeight();
+
+            updateWidth();
+            
+            updateJavaScript();
+
+            $(window).resize(function(){
+                
+                updateHeight();
+
+                updateWidth();
+
+            })
+
+            updateOutput();
+
+            $(".contentArea").on('change paste keyup',function(){
+                
+                updateOutput();
+            })
+            
+            $("#javaScriptTextArea").on('change keyup paste',function(){
+                updateJavaScript();
+            })
+
+
+        </script>
+
+    </body>
+
+</html>

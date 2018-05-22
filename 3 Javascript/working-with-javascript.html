@@ -1,0 +1,128 @@
+<html>
+    
+    <head>
+    
+        <title>FunWithJavaScript</title>
+        
+        <style type = "text/css">
+        
+            #text{
+
+                    font-size:200%;
+                    text-align:center;
+                    font-weight:bold;
+
+            }
+            
+            #timer{
+    
+                    width:70px;
+                    height:25px;
+                    text-align:center;
+                    position:relative;
+                    top:-35px;
+                    left:70px;
+                    border:1px black solid;
+            }
+            
+            
+              #shape{
+
+                    border:1px black solid;
+                    width:200px;
+                    height:200px;
+                    background-color:bisque;
+                    display:none;
+                    position:relative;
+
+                }
+    
+        
+        </style>
+        
+    </head>
+
+    <body>
+    
+        <p id="text">Click as Fast you can</p>
+        
+        <p id ="time-text">Your time: </p>
+        
+        <div id="timer"></div>
+        
+        <div id="shape"></div>
+        
+        <script type="text/javascript">
+            
+            var startTime = new Date().getTime();
+            
+            function showShape(){
+                
+                 startTime = new Date().getTime();
+                
+                document.getElementById("shape").style.display="block";
+                
+                document.getElementById("shape").style.top=(Math.random()*400+50)+"px"
+                
+                document.getElementById("shape").style.left=(Math.random()*400+50)+"px"
+                
+                document.getElementById("shape").style.height=(Math.random()*200+50)+"px"
+                
+                 document.getElementById("shape").style.width=(Math.random()*200+50)+"px"
+                 
+                 document.getElementById("shape").style.backgroundColor=colors();
+                 
+                 if (Math.random()<0.5){
+                     
+                     document.getElementById("shape").style.borderRadius="50%";
+                     
+                 }else{
+                     
+                     document.getElementById("shape").style.borderRadius="0%";
+                     
+                 }
+                
+            }
+            
+            function colors(){
+                
+                var letters="EF012B3456789ACD".split("");
+                var color="#";
+                var i=0;
+                while(i<6){
+                    
+                    color+=letters[Math.floor(Math.random()*16)];
+                    i+=1;
+                }
+                return (color);
+                      
+            }
+            
+            function setTime(){
+                
+                setTimeout(showShape,Math.random()*2000)  
+                
+            }
+            
+            
+            setTime();
+        
+            document.getElementById("shape").onclick=function(){
+                
+                  
+                
+                var endTime = new Date().getTime();
+                
+                var timeTaken = (endTime-startTime)/1000;
+                document.getElementById("shape").style.display="none";
+                
+                document.getElementById("timer").innerHTML=timeTaken+" sec";
+                
+                 setTime();
+            }
+        
+        </script>
+        
+    </body>
+
+</html>
